@@ -4,7 +4,9 @@
   "description": "The backend of the webfoto project for s4web",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "transpile": "tsc -p source",
+    "start": "node dist/main",
+    "serve": "npm run transpile && npm start"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,26 @@
   "bugs": {
     "url": "https://github.com/euberdeveloper/webfoto-backend/issues"
   },
-  "homepage": "https://github.com/euberdeveloper/webfoto-backend#readme"
+  "homepage": "https://github.com/euberdeveloper/webfoto-backend#readme",
+  "devDependencies": {
+    "@euberdeveloper/eslint-config-typescript": "^5.3.1",
+    "@types/cors": "^2.8.12",
+    "@types/module-alias": "^2.0.1",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^16.4.3",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-typescript": "^3.0.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "bullmq": "^1.40.1",
+    "cors": "^2.8.5",
+    "euberlog": "^2.0.18",
+    "express": "^4.17.1",
+    "module-alias": "^2.2.2",
+    "morgan": "^1.10.0",
+    "move-file": "^2.1.0"
+  }
 }
