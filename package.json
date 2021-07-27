@@ -1,0 +1,19 @@
+{
+  "name": "webfoto-backend",
+  "version": "1.0.0",
+  "description": "The backend of the webfoto project for s4web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/euberdeveloper/webfoto-backend.git"
+  },
+  "author": "Eugenio Vinicio Berretta <euberdeveloper@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/euberdeveloper/webfoto-backend/issues"
+  },
+  "homepage": "https://github.com/euberdeveloper/webfoto-backend#readme"
+}
