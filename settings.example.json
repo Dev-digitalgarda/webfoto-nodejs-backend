@@ -1,0 +1,16 @@
+[
+    {
+        "name": "myalbum",
+        "inputPath": "./path/to/my/album/photos",
+        "type": "DAHUA",
+        "keepEverySeconds": 600,
+        "analyzeCrono": "*/5 * * * *"
+    },
+    {
+        "name": "myalbum2",
+        "inputPath": "./path/to/my/album2/photos",
+        "type": "DAHUA",
+        "keepEverySeconds": 1500,
+        "analyzeCrono": "*/7 * * * *"
+    }
+]

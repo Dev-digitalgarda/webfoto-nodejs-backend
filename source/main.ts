@@ -4,7 +4,7 @@ import * as express from 'express';
 import { Loader } from '@/loaders';
 import router from '@/api';
 import logger from '@/utils/logger';
-import CONFIG from '@/config';
+import { CONFIG } from '@/config';
 
 async function startServer(): Promise<void> {
     logger.hr();

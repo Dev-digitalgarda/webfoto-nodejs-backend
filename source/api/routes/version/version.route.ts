@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import CONFIG from '@/config';
+import { CONFIG } from '@/config';
 
 export default function (): Router {
     const router = Router();
