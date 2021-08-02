@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { validateSettingsSchema } from '@/utils/settingsValidator';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 
@@ -50,3 +51,4 @@ export const CONFIG = {
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
 export const SETTINGS = require(CONFIG.SETTINGS_PATH) as AlbumConfig[];
+validateSettingsSchema(SETTINGS);
