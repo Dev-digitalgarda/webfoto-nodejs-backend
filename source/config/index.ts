@@ -11,7 +11,7 @@ declare const process: {
 interface AlbumConfig {
     name: string;
     inputPath: string;
-    type: string;
+    driver: string;
     keepEverySeconds: number;
     analyzeCrono: string;
 }

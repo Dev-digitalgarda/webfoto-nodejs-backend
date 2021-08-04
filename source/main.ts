@@ -4,7 +4,8 @@ import * as express from 'express';
 import { Loader } from '@/loaders';
 import router from '@/api';
 import logger from '@/utils/logger';
-import { CONFIG } from '@/config';
+import { CONFIG, SETTINGS } from '@/config';
+import { DahuaDriver } from './drivers/dahua';
 
 async function startServer(): Promise<void> {
     logger.hr();
@@ -27,3 +28,6 @@ async function startServer(): Promise<void> {
 }
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 startServer();
+
+const d = new DahuaDriver(SETTINGS.find(s => s.driver === 'DAHUA')?.inputPath as string);
+d.analyze();
