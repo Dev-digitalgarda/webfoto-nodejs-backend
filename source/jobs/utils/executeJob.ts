@@ -13,11 +13,11 @@ function getImageName(name: string, timestamp: Date): string {
     return `${name}_${timestamp.toISOString()}.jpg`;
 }
 
-function imageFromInputImage(name: string, destination: string, inputImage: InputImage): Image {
+function imageFromInputImage(name: string, inputImage: InputImage): Image {
     const imageName = getImageName(name, inputImage.timestamp);
     return {
         name,
-        path: path.join(destination, imageName),
+        path: `/${name}/${imageName}`,
         timestamp: inputImage.timestamp,
         sizeInBytes: inputImage.sizeInBytes,
         sizeHumanReadable: inputImage.sizeHumanReadable
@@ -26,7 +26,6 @@ function imageFromInputImage(name: string, destination: string, inputImage: Inpu
 
 export async function executeJob(setting: AlbumConfig): Promise<void> {
     const lastAlbumTimestamp = await databaseService.getLastAlbumTimestamp(setting.name);
-    const destination = path.join(CONFIG.OUTPUT_FOTOS_PATH, setting.name);
 
     const driver = DRIVERS[setting.driver];
     const images = await driver(setting.inputPath);
@@ -67,9 +66,10 @@ export async function executeJob(setting: AlbumConfig): Promise<void> {
 
     const toDeleteImagesPromises = toDeleteImages.map(async image => unlink(image.path));
     const toSaveImagesPromises = toSaveImages.map(async image => {
-        const toSaveImg = imageFromInputImage(setting.name, destination, image);
+        const toSaveImg = imageFromInputImage(setting.name, image);
         await databaseService.insertImage(setting.name, toSaveImg);
-        await move(image.path, toSaveImg.path);
+        const toSavePath = path.join(CONFIG.OUTPUT_FOTOS_PATH, toSaveImg.path);
+        await move(image.path, toSavePath);
     });
 
     await Promise.all([...toDeleteImagesPromises, ...toSaveImagesPromises]);
