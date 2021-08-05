@@ -1,9 +1,6 @@
 name: Publish Docker image
 
-on:
-  push:
-    branches:
-      - server-python
+on: [push]
 
 jobs:
   push_to_registry:
