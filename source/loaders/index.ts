@@ -7,6 +7,7 @@ import loadHelmet from './helmet';
 import loadCors from './cors';
 import loadBodyParser from './bodyParser';
 
+import loadJobs from './jobs';
 import getErrorHandler from './errorHandler';
 
 export class Loader {
@@ -41,15 +42,15 @@ export class Loader {
         logger.hr();
     }
 
-    // public async loadJobs(): Promise<void> {
-    //     logger.hr();
-    //     logger.info('Loading jobs...');
+    public async loadJobs(): Promise<void> {
+        logger.hr();
+        logger.info('Loading jobs...');
 
-    //     await loadJobs();
+        await loadJobs();
 
-    //     logger.success('Loaded jobs');
-    //     logger.hr();
-    // }
+        logger.success('Loaded jobs');
+        logger.hr();
+    }
 
     public loadErrorHandler(): void {
         logger.hr();

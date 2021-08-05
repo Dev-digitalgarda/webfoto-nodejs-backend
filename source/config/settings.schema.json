@@ -27,7 +27,7 @@
             "driver": {
                 "type": "string",
                 "enum": [
-                    "DAHUA"
+                    "dahua"
                 ]
             },
             "keepEverySeconds": {

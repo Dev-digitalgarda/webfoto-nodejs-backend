@@ -4,8 +4,7 @@ import * as express from 'express';
 import { Loader } from '@/loaders';
 import router from '@/api';
 import logger from '@/utils/logger';
-import { CONFIG, SETTINGS } from '@/config';
-import { analyze } from './utils/drivers/implementations/dahua.driver';
+import { CONFIG } from '@/config';
 
 async function startServer(): Promise<void> {
     logger.hr();
@@ -17,7 +16,7 @@ async function startServer(): Promise<void> {
     loader.loadMiddlewares();
     loader.loadRouter();
     loader.loadErrorHandler();
-    // await loader.loadJobs();
+    await loader.loadJobs();
 
     logger.info('Starting server...');
     const port = CONFIG.SERVER.PORT;
@@ -28,5 +27,3 @@ async function startServer(): Promise<void> {
 }
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 startServer();
-
-analyze(SETTINGS[0].inputPath);

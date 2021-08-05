@@ -8,7 +8,7 @@ declare const process: {
     cwd: () => string;
 };
 
-interface AlbumConfig {
+export interface AlbumConfig {
     name: string;
     inputPath: string;
     driver: string;
@@ -39,7 +39,11 @@ export const CONFIG = {
     },
     REDIS: {
         HOST: process.env.REDIS_HOST,
-        PORT: process.env.REDIS_PORT
+        PORT: process.env.REDIS_PORT ? +process.env.REDIS_PORT : 6379
+    },
+    MONGODB: {
+        URI: process.env.MONGODB_URI ?? 'mongodb://localhost:27017',
+        DATABASE: process.env.MONGODB_DATABASE
     },
     SETTINGS_PATH: getPath(process.env.SETTINGS_PATH, 'SETTINGS_PATH'),
     OUTPUT_FOTOS_PATH: getPath(process.env.OUTPUT_FOTOS_PATH, 'OUTPUT_FOTOS_PATH'),
