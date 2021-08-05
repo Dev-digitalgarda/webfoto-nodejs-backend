@@ -54,22 +54,16 @@ export async function executeJob(setting: AlbumConfig): Promise<void> {
     await writeFile('log.json', log.join('\n'));
 
     console.log('TO DELETE');
-    const first = JSON.stringify(
-        toDeleteImages.map(el => el.timestamp),
-        null,
-        2
-    );
+    const first = toDeleteImages.map(el => el.timestamp);
+    const firstText = JSON.stringify(toDeleteImages, null, 2);
     console.log(first.length);
-    await writeFile('first.json', first);
+    await writeFile('first.json', firstText);
 
     console.log('TO SAVE');
-    const second = JSON.stringify(
-        toSaveImages.map(el => el.timestamp),
-        null,
-        2
-    );
+    const second = toSaveImages.map(el => el.timestamp);
+    const secondText = JSON.stringify(toSaveImages, null, 2);
     console.log(second.length);
-    await writeFile('second.json', second);
+    await writeFile('second.json', secondText);
 
     const toDeleteImagesPromises = toDeleteImages.map(async image => unlink(image.path));
     const toSaveImagesPromises = toSaveImages.map(async image => {

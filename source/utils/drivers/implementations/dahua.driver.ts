@@ -26,8 +26,10 @@ function extractDate(filename: string): Date | null {
 function analyzeTree(tree: Dree, images: InputImage[]): void {
     switch (tree.type) {
         case Type.DIRECTORY:
-            for (const child of tree.children as Dree[]) {
-                analyzeTree(child, images);
+            if (tree.children) {
+                for (const child of tree.children) {
+                    analyzeTree(child, images);
+                }
             }
             break;
         case Type.FILE:
