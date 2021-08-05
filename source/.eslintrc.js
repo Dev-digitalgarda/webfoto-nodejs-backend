@@ -10,4 +10,7 @@ module.exports = {
         'plugin:@euberdeveloper/unicorn',
         'plugin:@euberdeveloper/prettier'
     ],
+    rules: {
+        'unicorn/no-array-callback-reference': 'off'
+    }
 };

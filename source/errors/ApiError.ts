@@ -7,9 +7,9 @@ export interface ServerErrorResponse {
 export class ApiError extends Error {
     public __proto__: Error;
     public readonly code: number;
-    public readonly details?: string;
+    public readonly details?: any;
 
-    constructor(code: number, message?: string, details?: string) {
+    constructor(code: number, message?: string, details?: any) {
         // This includes a trick in order to make the instanceof properly work
         const trueProto = new.target.prototype;
         super(message);

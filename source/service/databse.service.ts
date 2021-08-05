@@ -34,6 +34,15 @@ export class DatabaseService {
         const collection = await this.getCollection(album);
         await collection.insertOne(image);
     }
+
+    public async getImages(album: string, from?: Date, to?: Date): Promise<Image[]> {
+        const collection = await this.getCollection(album);
+        const fromQuery = from ? { $gte: from } : {};
+        const toQuery = to ? { $lte: to } : {};
+        const query = from || to ? { timestamp: { ...fromQuery, ...toQuery } } : {};
+        const images = await collection.find({ ...query } as any).toArray();
+        return images;
+    }
 }
 
 export default new DatabaseService();
