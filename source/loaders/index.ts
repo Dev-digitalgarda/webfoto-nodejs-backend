@@ -6,6 +6,7 @@ import loadMorgan from './morgan';
 import loadHelmet from './helmet';
 import loadCors from './cors';
 import loadBodyParser from './bodyParser';
+import loadStatic from './static';
 
 import loadJobs from './jobs';
 import getErrorHandler from './errorHandler';
@@ -27,6 +28,7 @@ export class Loader {
         loadCors(this.app);
         loadHelmet(this.app);
         loadBodyParser(this.app);
+        loadStatic(this.app);
 
         logger.success('Middlewares loaded');
         logger.hr();

@@ -62,7 +62,7 @@ export default function (): Router {
             const { from, to } = extractFromAndToDate(queryParams);
 
             const images = await databseService.getImages(album, from, to);
-            res.json(images);
+            res.json(images.map(img => img.timestamp));
         })
     );
 

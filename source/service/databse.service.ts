@@ -40,7 +40,11 @@ export class DatabaseService {
         const fromQuery = from ? { $gte: from } : {};
         const toQuery = to ? { $lte: to } : {};
         const query = from || to ? { timestamp: { ...fromQuery, ...toQuery } } : {};
-        const images = await collection.find({ ...query } as any).toArray();
+        const images: any = await collection
+            .find({ ...query } as any)
+            .project({ timestamp: true, path: true })
+            .sort({ timestamp: 1 })
+            .toArray();
         return images;
     }
 }
